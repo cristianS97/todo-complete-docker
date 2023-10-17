@@ -13,6 +13,8 @@ services:
         max-size: 10m
         max-file: "3"
     ports:
+        # Desde fuera accedo por el puerto 5433
+        # Desde dentro accedo por el puerto 5432
       - '5433:5432'
     volumes: 
       - ./data:/var/lib/postgresql/data
@@ -20,13 +22,14 @@ services:
   api:
     container_name: api
     build: .
-    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
     environment:
       DB_USER: postgres
       DB_PASSWORD: postgres
-      DB_PORT: 5433
+      # Puerto interno
+      DB_PORT: 5432
       DB_NAME: todo
     ports:
       - "8000:8000"
