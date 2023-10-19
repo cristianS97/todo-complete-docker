@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'applications.users',
+    'applications.todo',
     'rest_framework'
 ]
 
@@ -84,6 +85,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER', 'postgres'),
         'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
         'HOST': 'database',
+        #'HOST': 'localhost',
         'PORT': os.environ.get('DB_PORT', 5433)
     }
 }
