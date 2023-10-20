@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import TodoListAPIView, TodoRetrieveAPIView, TodoCreateAPIView, TodoRetrieveUpdateAPIView, TodoDestroyAPIView
+from .views import (TodoListAPIView, TodoRetrieveAPIView, TodoCreateAPIView,
+                    TodoRetrieveUpdateAPIView, TodoDestroyAPIView)
 
 urlpatterns = [
     path('todos', TodoListAPIView.as_view(), name='all-todos'),
