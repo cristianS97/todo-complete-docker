@@ -7,30 +7,30 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class TodoListAPIView(ListAPIView):
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
 
 class TodoRetrieveAPIView(RetrieveAPIView):
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
 
 class TodoCreateAPIView(CreateAPIView):
-    serializer_class = TodoSerializer
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
+    serializer_class = TodoSerializer
 
 class TodoRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
 
 class TodoDestroyAPIView(RetrieveDestroyAPIView):
-    serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
