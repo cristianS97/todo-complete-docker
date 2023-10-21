@@ -21,7 +21,8 @@ services:
 
   api:
     container_name: api
-    build: .
+    build:
+      context: ./backend
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
@@ -37,3 +38,15 @@ services:
     depends_on:
       - database
     restart: always
+  
+  frontend:
+    container_name: frontend
+    build: 
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+    depends_on:
+      - database
+      - api
