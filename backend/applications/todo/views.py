@@ -10,13 +10,17 @@ class TodoListAPIView(ListAPIView):
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
     serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+
+    def get_queryset(self):
+        return Todo.objects.filter(creator=self.request.user)
 
 class TodoRetrieveAPIView(RetrieveAPIView):
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
     serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+
+    def get_queryset(self):
+        return Todo.objects.filter(creator=self.request.user, id=self.kwargs['pk'])
 
 class TodoCreateAPIView(CreateAPIView):
     authentication_classes=[TokenAuthentication]
@@ -27,10 +31,14 @@ class TodoRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
     serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+
+    def get_queryset(self):
+        return Todo.objects.filter(creator=self.request.user, id=self.kwargs['pk'])
 
 class TodoDestroyAPIView(RetrieveDestroyAPIView):
     authentication_classes=[TokenAuthentication]
     permission_classes=[IsAuthenticated]
     serializer_class = TodoSerializer
-    queryset = Todo.objects.all()
+
+    def get_queryset(self):
+        return Todo.objects.filter(creator=self.request.user, id=self.kwargs['pk'])
