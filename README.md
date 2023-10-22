@@ -7,10 +7,11 @@
 3. [Comandos para levantar la api](#comandos-api)
 4. [Base de datos](#base-de-datos)
 5. [Comandos para levantar la base de datos](#comandos-bbdd)
+6. [Frontend](#frontend)
 
 ## Descripción del proyecto
 ***
-Aplicación para poder gestionar los ***"ToDo"***, se compone de una bbdd postgresql, una api como backend escrita en django, y un frintend en react
+Aplicación para poder gestionar los ***"ToDo"***, se compone de una bbdd postgresql, una api como backend escrita en django, y un frontend en react
 
 ---
 # Api
@@ -52,3 +53,11 @@ Para este proyecto se hará uso de la base de datos postgres, esto ya que al ser
 
 ### Bajar contenedor base de datos
 * docker-compose -f postgres.yml down
+
+---
+
+# Frontend
+
+## Diseño del frontend
+
+El diseño será inspirado en los diseños de [nicoHDL](https://codepen.io/nicoHDL/pen/wvRRmNW) y [Dishant](https://codepen.io/dishantsoni/pen/pgVeQW) en codepen
