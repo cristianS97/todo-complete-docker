@@ -60,4 +60,4 @@ Para este proyecto se hará uso de la base de datos postgres, esto ya que al ser
 
 ## Diseño del frontend
 
-El diseño será inspirado en los diseños de [nicoHDL](https://codepen.io/nicoHDL/pen/wvRRmNW){:target="_blank" rel="noopener"} y [Dishant](https://codepen.io/dishantsoni/pen/pgVeQW){:target="_blank" rel="noopener"} en codepen
+El diseño será inspirado en los diseños de <a href="https://codepen.io/nicoHDL/pen/wvRRmNW" target="_blank">nicoHDL</a> y <a href="https://codepen.io/dishantsoni/pen/pgVeQW" target="_blank">Dishant</a> en codepen
