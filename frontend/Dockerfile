@@ -1,13 +1,23 @@
-FROM node:21-alpine AS development
+# STAGE 1
+FROM node:21-alpine AS prod
 
 WORKDIR /app
 
 COPY package.json .
 
-RUN npm install
+RUN npm i
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD [ "npm", "start" ]
+# STAGE 2
+FROM nginx:alpine
+
+ADD ./config/default.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=prod /app/build /var/www/app/
+
+EXPOSE 80
+
+CMD [ "nginx", "-g", "daemon off;" ]
