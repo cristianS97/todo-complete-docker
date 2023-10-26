@@ -20,19 +20,19 @@ function App() {
     } else {
       setLogin(false);
     }
-  }, [login]);
+  }, [login, email, password]);
 
   useEffect(() => {
     if(data) {
       getData(token, setData);
     }
-  }, [data]);
+  }, [data, token]);
 
   useEffect(() => {
     if(logout) {
       doLogout(token);
     }
-  }, [logout]);
+  }, [logout, token]);
 
   return (
     <div className="App">
