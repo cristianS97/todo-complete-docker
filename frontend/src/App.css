@@ -1,38 +1,114 @@
+html {
+  height: 100%;
+}
+:root {
+  --loginPrincipal: #df6536;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: url(img/coffeeBGBlur.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
 }
-
-.App-link {
-  color: #61dafb;
+.loginContainer{
+  width: 100%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.loginContainer .title h1 {
+  margin: 0;
+  padding: 0;
+  color: #262626;
+  text-transform: uppercase;
+  font-size: 36px;
+}
+.loginContainer .container {
+  width: 50%;
+  height: 400px;
+  background-color: #fff;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .5);
+}
+.loginContainer .container .left {
+  float: left;
+  width: 50%;
+  height: 400px;
+  background: url(img/coffee.jpg);
+  background-size: cover;
+  box-sizing: border-box;
+}
+.loginContainer .container .right {
+  float: right;
+  width: 50%;
+  height: 400px;
+  box-sizing: border-box;
+}
+.loginContainer .container .right h1 {
+  margin: 15px 0;
+  text-align: center;
+  color: var(--loginPrincipal);
+}
+.loginContainer .container .right .formBox {
+  width: 100%;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  height: 40px;
+  background: #fff;
+}
+.loginContainer .container .right .formBox p {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: var(--loginPrincipal);
+}
+.loginContainer .container .right .formBox input {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.loginContainer .container .right .formBox input[type="text"],
+.loginContainer .container .right .formBox input[type="password"] {
+  border: none;
+  border-bottom: 2px solid var(--loginPrincipal);
+  outline: none;
+  height: 40px;
+}
+.loginContainer .container .right .formBox input[type="text"]:focus,
+.loginContainer .container .right .formBox input[type="password"]:focus {
+  border-bottom: 2px solid #262626;
+}
+.loginContainer .container .right .formBox input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  background: #262626;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+.loginContainer .container .right .formBox input[type="submit"]:hover {
+  background: var(--loginPrincipal);
+}
+@media screen and (max-width: 769px) {
+  .loginContainer .container .left {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+  .loginContainer .container .right {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 426px) {
+  .loginContainer .container {
+    width: 90%;
   }
 }

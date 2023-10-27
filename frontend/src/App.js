@@ -1,9 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { doLogin } from './hooks/loginHook';
 import { getData } from './hooks/getDataHook';
 import { doLogout } from './hooks/logoutHook';
+import { Login } from './components/login';
 
 function App() {
   const [token, setToken] = useState('');
@@ -36,7 +36,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <Login />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -56,7 +57,7 @@ function App() {
         <button onClick={() => {setLogin(true);setLogout(false);}}>Login</button>
         <button onClick={() => {setLogout(true);setLogin(false);}}>Logout</button>
         <button onClick={() => setData(true)}>Data</button>
-      </header>
+      </header> */}
     </div>
   );
 }
