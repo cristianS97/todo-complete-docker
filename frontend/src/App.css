@@ -4,7 +4,7 @@ html {
 :root {
   --loginPrincipal: #df6536;
 }
-body {
+body.loginBody {
   margin: 0;
   padding: 0;
   background: url(img/coffeeBGBlur.jpg);
@@ -17,7 +17,7 @@ body {
 #root {
   height: 100%;
 }
-.App {
+.login {
   display: flex;
   align-items: center;
   height: 100%;
