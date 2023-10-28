@@ -15,8 +15,15 @@ export const Login = () => {
             doLogin(email, password, setToken);
         } else {
             setLogin(false);
+            setToken('');
         }
     }, [login, email, password]);
+
+    useEffect(() => {
+        if(login && token !== '') {
+            navigate('/')
+        }
+    }, [login, token, navigate]);
 
     const makeLogin = (e) => {
         e.preventDefault();
