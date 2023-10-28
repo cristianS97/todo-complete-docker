@@ -1,14 +1,36 @@
 import { types } from "../types/types";
 
 const initialState = {
+    token: null,
     todos: [],
     error: null,
     loading: false,
-    download: false
+    download: false,
+    login: false
 };
 
 export const todoReducer = (state=initialState, action) => {
     switch(action.type) {
+        case types.LOGIN_DO_LOGIN:
+            return {
+                ...state,
+                loading: true,
+                login: false
+            };
+        case types.LOGIN_LOGIN_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                token: action.payload.token,
+                login: true
+            };
+        case types.LOGIN_LOGIN_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                login: false
+            };
         case types.TODO_GET_ALL:
             return {
                 ...state,

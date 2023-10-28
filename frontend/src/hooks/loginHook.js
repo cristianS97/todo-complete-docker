@@ -1,5 +1,5 @@
 
-export const doLogin = (email, password, setToken, setLogin) => {
+export const doLogin = (email, password) => {
     var raw = JSON.stringify({
         "username": email,
         "password": password
@@ -14,12 +14,5 @@ export const doLogin = (email, password, setToken, setLogin) => {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8000/auth/login/", requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            console.log(result);
-            console.log(JSON.parse(result)['token']);
-            setToken(JSON.parse(result)['token']);
-        })
-        .catch(error => console.log('error', error));
+    return fetch("http://localhost:8000/auth/login/", requestOptions);
 }

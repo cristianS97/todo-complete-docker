@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { doLogin } from '../hooks/loginHook';
+import { useDispatch } from 'react-redux';
+import { startLogin } from "../redux/actions/todo";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
@@ -8,18 +9,19 @@ export const Login = () => {
     const [login, setLogin] = useState(false);
     const [token, setToken] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if(login && email !== '' && password !== '')
         {
             document.getElementsByTagName('body')[0].classList.remove('loginBody');
-            doLogin(email, password, setToken);
+            dispatch(startLogin(email, password));
         } else {
             setLogin(false);
             setToken('');
             document.getElementsByTagName('body')[0].classList.add('loginBody');
         }
-    }, [login, email, password]);
+    }, [login, email, password, dispatch]);
 
     useEffect(() => {
         if(login && token !== '') {
