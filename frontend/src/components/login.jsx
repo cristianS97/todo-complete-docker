@@ -12,10 +12,12 @@ export const Login = () => {
     useEffect(() => {
         if(login && email !== '' && password !== '')
         {
+            document.getElementsByTagName('body')[0].classList.remove('loginBody');
             doLogin(email, password, setToken);
         } else {
             setLogin(false);
             setToken('');
+            document.getElementsByTagName('body')[0].classList.add('loginBody');
         }
     }, [login, email, password]);
 
