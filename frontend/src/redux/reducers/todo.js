@@ -31,6 +31,13 @@ export const todoReducer = (state=initialState, action) => {
                 error: action.payload,
                 login: false
             };
+        case types.LOGOUT_DO_LOGOUT:
+            return {
+                ...state,
+                todos: [],
+                token: null,
+                login: false
+            }
         case types.TODO_GET_ALL:
             return {
                 ...state,

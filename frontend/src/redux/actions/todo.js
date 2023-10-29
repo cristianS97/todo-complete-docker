@@ -1,4 +1,5 @@
 import { doLogin } from "../../hooks/loginHook";
+import { doLogout } from "../../hooks/logoutHook";
 import { types } from "../types/types";
 
 export const startLogin = (email, password) => {
@@ -13,6 +14,15 @@ export const startLogin = (email, password) => {
     }
 }
 
+export const startLogout = (token) => {
+    return async (dispatch) => {
+        const resp = await doLogout(token);
+        if(resp.ok) {
+            dispatch(logout());
+        }
+    }
+}
+
 const login = (user) => ({
     type: types.LOGIN_LOGIN_SUCCESS,
     payload: user
@@ -21,6 +31,10 @@ const login = (user) => ({
 const loginError = (error) => ({
     type: types.LOGIN_LOGIN_ERROR,
     payload: error
+});
+
+const logout = () => ({
+    type: types.LOGOUT_DO_LOGOUT
 });
 
 export const getAllTodos = () => {

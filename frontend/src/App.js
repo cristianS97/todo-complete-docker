@@ -1,26 +1,31 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import logo from './logo.svg';
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { getData } from './hooks/getDataHook';
-import { doLogout } from './hooks/logoutHook';
-import { Login } from './components/login';
+import { startLogout } from './redux/actions/todo';
 
 function App() {
-  const [token, setToken] = useState('');
   const [logout, setLogout] = useState(false);
   const [data, setData] = useState(false);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const selector = useSelector(state => state);
+
   useEffect(() => {
     if(data) {
-      getData(token, setData);
+      getData(selector.todo.token, setData);
     }
-  }, [data, token]);
+  }, [data, selector.todo.token]);
 
   useEffect(() => {
     if(logout) {
-      doLogout(token);
+      dispatch(startLogout(selector.todo.token));
+      navigate('/login');
     }
-  }, [logout, token]);
+  }, [logout, selector.todo.token, dispatch, navigate]);
 
   return (
     <div className="App">
@@ -37,6 +42,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => setLogout(!logout)}>Logout</button>
         <button onClick={() => setData(true)}>Data</button>
       </header>
     </div>

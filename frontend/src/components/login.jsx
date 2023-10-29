@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startLogin } from "../redux/actions/todo";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(false);
-    const [token, setToken] = useState('');
     const navigate = useNavigate();
+
     const dispatch = useDispatch();
+    const selector = useSelector(state => state);
 
     useEffect(() => {
         if(login && email !== '' && password !== '')
@@ -18,16 +19,15 @@ export const Login = () => {
             dispatch(startLogin(email, password));
         } else {
             setLogin(false);
-            setToken('');
             document.getElementsByTagName('body')[0].classList.add('loginBody');
         }
     }, [login, email, password, dispatch]);
 
     useEffect(() => {
-        if(login && token !== '') {
+        if(login && selector.todo.token !== '') {
             navigate('/')
         }
-    }, [login, token, navigate]);
+    }, [login, selector.todo.token, navigate]);
 
     const makeLogin = (e) => {
         e.preventDefault();
