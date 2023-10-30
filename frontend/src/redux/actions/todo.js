@@ -1,3 +1,4 @@
+import { getData } from "../../hooks/getDataHook";
 import { doLogin } from "../../hooks/loginHook";
 import { doLogout } from "../../hooks/logoutHook";
 import { types } from "../types/types";
@@ -37,13 +38,30 @@ const logout = () => ({
     type: types.LOGOUT_DO_LOGOUT
 });
 
-export const getAllTodos = () => {
+export const getAllTodos = (token) => {
     return async (dispatch) => {
         dispatch(downloadTodos());
+        const resp = await getData(token);
+        const body = await resp.json();
+        if(resp.ok) {
+            dispatch(downloadTodosSuccess(body));
+        } else {
+            dispatch(downloadTodosError("No se han podido descargar las notas"));
+        }
     };
 };
 
 const downloadTodos = () => ({
     type: types.TODO_GET_ALL_START,
     payload: true
+});
+
+const downloadTodosSuccess = (todos) => ({
+    type: types.TODO_GET_ALL_SUCCESS,
+    payload: todos
+});
+
+const downloadTodosError = (msg) => ({
+    type: types.TODO_GET_ALL_SUCCESS,
+    payload: msg
 });

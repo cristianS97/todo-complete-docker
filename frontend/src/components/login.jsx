@@ -10,12 +10,11 @@ export const Login = () => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const selector = useSelector(state => state);
+    const selector = useSelector(state => state.todo);
 
     useEffect(() => {
         if(login && email !== '' && password !== '')
         {
-            document.getElementsByTagName('body')[0].classList.remove('loginBody');
             dispatch(startLogin(email, password));
         } else {
             setLogin(false);
@@ -24,10 +23,11 @@ export const Login = () => {
     }, [login, email, password, dispatch]);
 
     useEffect(() => {
-        if(login && selector.todo.token !== '') {
+        if(login && selector.token !== '' && selector.token !== null) {
+            document.getElementsByTagName('body')[0].classList.remove('loginBody');
             navigate('/')
         }
-    }, [login, selector.todo.token, navigate]);
+    }, [login, selector.token, navigate]);
 
     const makeLogin = (e) => {
         e.preventDefault();
@@ -40,7 +40,7 @@ export const Login = () => {
                 <div className="container">
                     <div className="left"></div>
                     <div className="right">
-                        <h1 className="title">Login {login ? 'Si' : 'No'}</h1>
+                        <h1 className="title">Login</h1>
                         <div className="formBox">
                             <form action="">
                                 <p>Usuario</p>

@@ -1,5 +1,5 @@
 
-export const getData = (token, setData) => {
+export const getData = (token) => {
     var requestOptions = {
         method: 'GET',
         headers: {
@@ -8,9 +8,5 @@ export const getData = (token, setData) => {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8000/api/todos", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error))
-        .finally(() => setData(false));
+    return fetch("http://localhost:8000/api/todos", requestOptions);
 }

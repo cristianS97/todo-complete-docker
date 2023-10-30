@@ -3,29 +3,25 @@ import React, { useState, useEffect } from "react";
 import logo from './logo.svg';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { getData } from './hooks/getDataHook';
-import { startLogout } from './redux/actions/todo';
+import { getAllTodos, startLogout } from './redux/actions/todo';
 
 function App() {
   const [logout, setLogout] = useState(false);
-  const [data, setData] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selector = useSelector(state => state);
+  const selector = useSelector(state => state.todo);
 
   useEffect(() => {
-    if(data) {
-      getData(selector.todo.token, setData);
-    }
-  }, [data, selector.todo.token]);
+    dispatch(getAllTodos(selector.token));
+  }, [selector.token, dispatch]);
 
   useEffect(() => {
     if(logout) {
-      dispatch(startLogout(selector.todo.token));
+      dispatch(startLogout(selector.token));
       navigate('/login');
     }
-  }, [logout, selector.todo.token, dispatch, navigate]);
+  }, [logout, selector.token, dispatch, navigate]);
 
   return (
     <div className="App">
@@ -43,7 +39,11 @@ function App() {
           Learn React
         </a>
         <button onClick={() => setLogout(!logout)}>Logout</button>
-        <button onClick={() => setData(true)}>Data</button>
+
+        <hr />
+        {selector.todos.length > 0 && selector.todos.map(todo => (
+          <p>{todo.id} | {todo.title} | {todo.description}</p>
+        ))}
       </header>
     </div>
   );
