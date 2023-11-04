@@ -64,6 +64,16 @@ export const todoReducer = (state=initialState, action) => {
                 download: false,
                 error: action.payload
             };
+        case types.TODO_CHANGE_COMPLETE_STATE:
+            return {
+                ...state,
+                todos: [
+                    ...state.todos.filter(todo => todo.id !== action.payload.id),
+                    {
+                        ...action.payload
+                    }
+                ]
+            };
         default:
             return state;
     }

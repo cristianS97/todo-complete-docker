@@ -65,3 +65,14 @@ const downloadTodosError = (msg) => ({
     type: types.TODO_GET_ALL_SUCCESS,
     payload: msg
 });
+
+export const changeTodoState = (todo) => {
+    return async (dispatch) => {
+        dispatch(changeTodoAction(todo));
+    }
+}
+
+const changeTodoAction = (todo) => ({
+    type: types.TODO_CHANGE_COMPLETE_STATE,
+    payload: todo
+});
