@@ -1,3 +1,4 @@
+import { createTodoPost } from "../../hooks/createDataHook";
 import { getData } from "../../hooks/getDataHook";
 import { doLogin } from "../../hooks/loginHook";
 import { doLogout } from "../../hooks/logoutHook";
@@ -80,3 +81,17 @@ const changeTodoAction = (todo) => ({
     type: types.TODO_CHANGE_COMPLETE_STATE,
     payload: todo
 });
+
+export const createTodo = (todo, token) => {
+    return async (dispatch) => {
+        const resp = await createTodoPost(todo, token);
+        if(resp.ok) {
+            dispatch(startCreateTodo(todo));
+        }
+    }
+}
+
+const startCreateTodo = (todo) => ({
+    type: types.TODO_CREATE_TODO,
+    payload: todo
+})

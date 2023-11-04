@@ -6,7 +6,8 @@ const initialState = {
     error: null,
     loading: false,
     download: false,
-    login: false
+    login: false,
+    user: null
 };
 
 export const todoReducer = (state=initialState, action) => {
@@ -22,7 +23,8 @@ export const todoReducer = (state=initialState, action) => {
                 ...state,
                 loading: false,
                 token: action.payload.token,
-                login: true
+                login: true,
+                user: action.payload.id
             };
         case types.LOGIN_LOGIN_ERROR:
             return {
@@ -36,7 +38,8 @@ export const todoReducer = (state=initialState, action) => {
                 ...state,
                 todos: [],
                 token: null,
-                login: false
+                login: false,
+                user: null
             }
         case types.TODO_GET_ALL:
             return {
@@ -72,6 +75,14 @@ export const todoReducer = (state=initialState, action) => {
                     {
                         ...action.payload
                     }
+                ]
+            };
+        case types.TODO_CREATE_TODO:
+            return {
+                ...state,
+                todos: [
+                    ...state.todos,
+                    action.payload
                 ]
             };
         default:
