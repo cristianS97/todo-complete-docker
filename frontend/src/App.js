@@ -24,7 +24,7 @@ function App() {
   }, [logout, selector.token, dispatch, navigate]);
 
   const changeState = (todo) => {
-    dispatch(changeTodoState({...todo, complete: !todo.complete}));
+    dispatch(changeTodoState({...todo, complete: !todo.complete}, selector.token));
   }
 
   return (
@@ -41,7 +41,7 @@ function App() {
               </div>
               <ul id="list-container">
                 {selector.todos.length > 0 && selector.todos.map((todo, idx) => (
-                  <li onClick={() => changeState(todo)} className={todo.complete ? 'checked' : ''} key={todo.id}>{todo.title}<span>x</span></li>
+                  <li onClick={() => changeState(todo)} className={todo.complete ? 'checked' : ''} key={idx}>{todo.title}<span>x</span></li>
                 ))}
               </ul>
           </div>

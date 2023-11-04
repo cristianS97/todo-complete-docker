@@ -1,6 +1,7 @@
 import { getData } from "../../hooks/getDataHook";
 import { doLogin } from "../../hooks/loginHook";
 import { doLogout } from "../../hooks/logoutHook";
+import { updateData } from "../../hooks/updateDataHook";
 import { types } from "../types/types";
 
 export const startLogin = (email, password) => {
@@ -66,9 +67,12 @@ const downloadTodosError = (msg) => ({
     payload: msg
 });
 
-export const changeTodoState = (todo) => {
+export const changeTodoState = (todo, token) => {
     return async (dispatch) => {
-        dispatch(changeTodoAction(todo));
+        const resp = await updateData(todo, token);
+        if(resp.ok) {
+            dispatch(changeTodoAction(todo));
+        }
     }
 }
 
