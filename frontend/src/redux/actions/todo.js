@@ -1,4 +1,5 @@
 import { createTodoPost } from "../../hooks/createDataHook";
+import { deleteTodoPost } from "../../hooks/deleteDataHook";
 import { getData } from "../../hooks/getDataHook";
 import { doLogin } from "../../hooks/loginHook";
 import { doLogout } from "../../hooks/logoutHook";
@@ -85,13 +86,28 @@ const changeTodoAction = (todo) => ({
 export const createTodo = (todo, token) => {
     return async (dispatch) => {
         const resp = await createTodoPost(todo, token);
+        const body = await resp.json();
         if(resp.ok) {
-            dispatch(startCreateTodo(todo));
+            dispatch(startCreateTodo(body));
         }
     }
 }
 
 const startCreateTodo = (todo) => ({
     type: types.TODO_CREATE_TODO,
+    payload: todo
+})
+
+export const deleteTodo = (todo, token) => {
+    return async (dispatch) => {
+        const resp = await deleteTodoPost(todo, token);
+        if(resp.ok) {
+            dispatch(startDeleteTodo(todo));
+        }
+    }
+}
+
+const startDeleteTodo = (todo) => ({
+    type: types.TODO_DELETE_TODO,
     payload: todo
 })

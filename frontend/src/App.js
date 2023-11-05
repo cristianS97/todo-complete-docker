@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllTodos, startLogout } from './redux/actions/todo';
+import { deleteTodo, getAllTodos, startLogout } from './redux/actions/todo';
 import { changeTodoState } from './redux/actions/todo';
 import { createTodo } from './redux/actions/todo';
 
@@ -42,6 +42,10 @@ function App() {
     }
   }
 
+  const deleteTodoClick = (todo) => {
+    dispatch(deleteTodo(todo, selector.token));
+  }
+
   return (
     <div className="App">
         <div className="containerIndex">
@@ -56,7 +60,7 @@ function App() {
               </div>
               <ul id="list-container">
                 {selector.todos.length > 0 && selector.todos.map((todo, idx) => (
-                  <li onClick={() => changeState(todo)} className={todo.complete ? 'checked' : ''} key={idx}>{todo.title}<span>x</span></li>
+                  <li onClick={() => changeState(todo)} className={todo.complete ? 'checked' : ''} key={idx}>{todo.title}<span onClick={() => deleteTodoClick(todo)}>x</span></li>
                 ))}
               </ul>
           </div>
