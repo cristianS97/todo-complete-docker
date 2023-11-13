@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteTodo, getAllTodos, startLogout } from './redux/actions/todo';
 import { changeTodoState } from './redux/actions/todo';
 import { createTodo } from './redux/actions/todo';
+import { Header } from './components/index/Header';
+import { NewTodoForm } from './components/index/NewTodoForm';
+import { TodoList } from './components/index/TodoList';
 
 function App() {
   const [logout, setLogout] = useState(false);
@@ -50,19 +53,19 @@ function App() {
     <div className="App">
         <div className="containerIndex">
           <div className="todo-app">
-              <div className="app-title">
-                  <h2>To-do app</h2>
-                  <h5 style={{'cursor': 'pointer'}} onClick={() => setLogout(true)}>Cerrar sesión</h5>
-              </div>
-              <div className="row">
-                  <input type="text" id="input-box" placeholder="Agrega una tarea" className='addTodo' value={newTodo} onChange={e => setnewTodo(e.target.value)} />
-                  <button onClick={addNewTodo}>Agregar</button>
-              </div>
-              <ul id="list-container">
-                {selector.todos.length > 0 && selector.todos.map((todo, idx) => (
-                  <li onClick={() => changeState(todo)} className={todo.complete ? 'checked' : ''} key={idx}>{todo.title}<span onClick={() => deleteTodoClick(todo)}>x</span></li>
-                ))}
-              </ul>
+              <Header
+                setLogout={setLogout}
+              />
+              <NewTodoForm
+                newTodo={newTodo}
+                setnewTodo={setnewTodo}
+                addNewTodo={addNewTodo}
+              />
+              <TodoList
+                changeState={changeState}
+                deleteTodoClick={deleteTodoClick}
+                todos={selector.todos}
+              />
           </div>
         </div>
     </div>
