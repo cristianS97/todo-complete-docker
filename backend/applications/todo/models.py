@@ -6,7 +6,7 @@ from applications.users.models import User
 class Todo(models.Model):
     title = models.CharField(
         verbose_name='Título de la tarea',
-        max_length=20
+        max_length=50
     )
     complete = models.BooleanField(
         verbose_name='Completada',

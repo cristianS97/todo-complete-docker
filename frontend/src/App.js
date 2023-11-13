@@ -53,7 +53,6 @@ function App() {
   }
 
   const confirmEdit = () => {
-    console.log({...selector.editingTodo, title:newTodo});
     dispatch(editTodo({...selector.editingTodo, title:newTodo}, selector.token));
   }
 
