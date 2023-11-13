@@ -1,5 +1,8 @@
+import { useSelector } from 'react-redux';
 
-export const NewTodoForm = ({newTodo, setnewTodo, addNewTodo}) => {
+export const NewTodoForm = ({newTodo, setnewTodo, addNewTodo, confirmEdit}) => {
+    const selector = useSelector(state => state.todo);
+
     return (
         <div className="row">
             <input
@@ -10,9 +13,15 @@ export const NewTodoForm = ({newTodo, setnewTodo, addNewTodo}) => {
                 value={newTodo}
                 onChange={e => setnewTodo(e.target.value)}
             />
-            <button
-                onClick={addNewTodo}
-            >Agregar</button>
+            {!selector.editingTodo ?
+                <button
+                    onClick={addNewTodo}
+                >Agregar</button>
+            :
+                <button
+                    onClick={() => confirmEdit()}
+                >Editar</button>
+            }
         </div>
     );
 }

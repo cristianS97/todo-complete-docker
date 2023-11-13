@@ -2,9 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTodo, getAllTodos, startLogout } from './redux/actions/todo';
-import { changeTodoState } from './redux/actions/todo';
-import { createTodo } from './redux/actions/todo';
+import { deleteTodo, getAllTodos, startLogout, changeTodoState, createTodo, startEditTodo, editTodo } from './redux/actions/todo';
 import { Header } from './components/index/Header';
 import { NewTodoForm } from './components/index/NewTodoForm';
 import { TodoList } from './components/index/TodoList';
@@ -49,6 +47,22 @@ function App() {
     dispatch(deleteTodo(todo, selector.token));
   }
 
+  const startEditTodoClick = (todo) => {
+    setnewTodo(todo.title);
+    dispatch(startEditTodo(todo));
+  }
+
+  const confirmEdit = () => {
+    console.log({...selector.editingTodo, title:newTodo});
+    dispatch(editTodo({...selector.editingTodo, title:newTodo}, selector.token));
+  }
+
+  useEffect(() => {
+    if(selector.editingTodo === null) {
+      setnewTodo('');
+    }
+  }, [selector.editingTodo]);
+
   return (
     <div className="App">
         <div className="containerIndex">
@@ -60,10 +74,12 @@ function App() {
                 newTodo={newTodo}
                 setnewTodo={setnewTodo}
                 addNewTodo={addNewTodo}
+                confirmEdit={confirmEdit}
               />
               <TodoList
                 changeState={changeState}
                 deleteTodoClick={deleteTodoClick}
+                startEditTodoClick={startEditTodoClick}
                 todos={selector.todos}
               />
           </div>

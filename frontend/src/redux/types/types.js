@@ -10,5 +10,7 @@ export const types = {
     TODO_GET_ALL_ERROR: '[ToDo] Get All Error',
     TODO_CHANGE_COMPLETE_STATE: '[ToDo] Change Complete State',
     TODO_CREATE_TODO: '[ToDo] Create Todo',
-    TODO_DELETE_TODO: '[ToDo] Delete Todo'
+    TODO_DELETE_TODO: '[ToDo] Delete Todo',
+    TODO_EDIT_TODO: '[ToDo] Edit Todo',
+    TODO_CONFIRM_EDIT: '[ToDo] Confirm Edit'
 };

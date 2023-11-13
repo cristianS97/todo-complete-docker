@@ -7,7 +7,8 @@ const initialState = {
     loading: false,
     download: false,
     login: false,
-    user: null
+    user: null,
+    editingTodo: null
 };
 
 export const todoReducer = (state=initialState, action) => {
@@ -39,7 +40,8 @@ export const todoReducer = (state=initialState, action) => {
                 todos: [],
                 token: null,
                 login: false,
-                user: null
+                user: null,
+                editingTodo: null
             }
         case types.TODO_GET_ALL:
             return {
@@ -92,6 +94,20 @@ export const todoReducer = (state=initialState, action) => {
                     ...state.todos.filter(todo => todo.id !== action.payload.id)
                 ]
             };
+        case types.TODO_EDIT_TODO:
+            return {
+                ...state,
+                editingTodo: action.payload
+            }
+        case types.TODO_CONFIRM_EDIT:
+            return {
+                ...state,
+                editingTodo: null,
+                todos: [
+                    ...state.todos.filter(todo => todo.id !== action.payload.id),
+                    action.payload
+                ]
+            }
         default:
             return state;
     }

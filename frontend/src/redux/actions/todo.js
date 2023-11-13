@@ -111,3 +111,22 @@ const startDeleteTodo = (todo) => ({
     type: types.TODO_DELETE_TODO,
     payload: todo
 })
+
+export const startEditTodo = (todo) => ({
+    type: types.TODO_EDIT_TODO,
+    payload: todo
+})
+
+export const editTodo = (todo, token) => {
+    return async (dispatch) => {
+        const resp = await updateData(todo, token);
+        if(resp.ok) {
+            dispatch(confirmEditTodo(todo));
+        }
+    }
+}
+
+const confirmEditTodo = (todo) => ({
+    type: types.TODO_CONFIRM_EDIT,
+    payload: todo
+})
