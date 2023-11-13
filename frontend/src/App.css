@@ -150,6 +150,9 @@ body{
 .app-title h2, .app-title i{
     color: #002765;
 }
+.app-title h2 svg {
+  fill: #ff5945;
+}
 .app-title i{
     font-size: 26px;
 }
@@ -178,7 +181,7 @@ button{
     background-color: #ff5945;
     color: #fff;
     font-size: 18px;
-    transition: all .25s ease;
+    transition: all .5s ease;
 }
 button:hover{
     filter: brightness(.8);
@@ -218,7 +221,7 @@ ul .checked{
 ul .checked::before{
     background-color: #ff5945;
 }
-span {
+span.delete {
     position: absolute;
     right: 0;
     top: 50%;
@@ -231,9 +234,26 @@ span {
     align-items: center;
     color: #555;
     font-size: 18px;
-    transition: all .2s ease;
+    transition: all .5s ease;
 }
-span:hover{
-    background-color: #c9c9c9;
-    color: #fff;
+span.edit {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s ease;
+}
+span.delete,
+span.edit{
+    fill: #002765;
+}
+span.delete:hover,
+span.edit:hover{
+    fill: #ff5945;
 }
