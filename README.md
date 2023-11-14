@@ -8,6 +8,7 @@
 4. [Base de datos](#base-de-datos)
 5. [Comandos para levantar la base de datos](#comandos-bbdd)
 6. [Frontend](#frontend)
+7. [Proximos pasos](#proximos-pasos)
 
 ## Descripción del proyecto
 ***
@@ -61,3 +62,13 @@ Para este proyecto se hará uso de la base de datos postgres, esto ya que al ser
 ## Diseño del frontend
 
 El diseño será inspirado en los diseños de [nicoHDL](https://codepen.io/nicoHDL/pen/wvRRmNW) y [Dishant](https://codepen.io/dishantsoni/pen/pgVeQW) en codepen
+
+---
+
+# Proximos pasos
+
+En los próximos pasos se hara lo siguiente:
+
+1. Migrar la app a typescript
+2. Configurar pruebas en Django
+3. Configurar pruebas en React
