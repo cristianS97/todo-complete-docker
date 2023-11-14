@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo "Hora de los tests"
+python manage.py test applications.todo
+
+echo "Levantar backend"
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic
