@@ -1,36 +1,33 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, ImageBackground, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { InputLogin } from './assets/components/Login/InputLogin';
+import { ButtonLogin } from './assets/components/Login/ButtonLogin';
 
 export default function App() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   return (
     <View style={styles.body}>
       <ImageBackground source={require('./assets/mias/coffeeBGBlur.jpg')} style={styles.body}>
         <View style={styles.container}>
           <Text style={styles.title}>Login</Text>
-          <View style={styles.contenedorInputs}>
-            <Text style={styles.formLabel}>Usuario</Text>
-            <TextInput
-              value={username}
-              onChangeText={setUsername}
-              style={styles.textInput}
-            />
-          </View>
-          <View style={styles.contenedorInputs}>
-            <Text style={styles.formLabel}>Contraseña</Text>
-            <TextInput
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry={true}
-              style={styles.textInput}
-            />
-          </View>
-          <Pressable style={styles.boton}>
-            <Text style={styles.botonText}>Ingresar</Text>
-          </Pressable>
+          <InputLogin
+            label="Usuario"
+            value={username}
+            onChange={setUsername}
+            security={false}
+          />
+          <InputLogin
+            label="Contraseña"
+            value={password}
+            onChange={setPassword}
+            security={true}
+          />
+          <ButtonLogin
+            text="Ingresar"
+          />
           <StatusBar style="light" />
         </View>
       </ImageBackground>
@@ -67,33 +64,5 @@ const styles = StyleSheet.create({
     color: '#df6536',
     fontSize: 40,
     fontWeight: 'bold'
-  },
-  textInput: {
-    padding: 2,
-    borderBottomColor: '#df6536',
-    borderBottomWidth: 1,
-    fontSize: 18
-  },
-  contenedorInputs: {
-    marginBottom: 15
-  },
-  formLabel: {
-    margin: 0,
-    padding: 0,
-    fontWeight: 'bold',
-    color: '#df6536',
-    fontSize: 17
-  },
-  boton: {
-    border: 'none',
-    outline: 'none',
-    height: 40,
-    backgroundColor: '#262626',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  botonText: {
-    color: '#fff',
-    fontSize: 16
   }
 });
