@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import { InputLogin } from './assets/components/Login/InputLogin';
-import { ButtonLogin } from './assets/components/Login/ButtonLogin';
+import { InputLogin } from './components/Login/InputLogin';
+import { ButtonLogin } from './components/Login/ButtonLogin';
 
 export default function App() {
   const [username, setUsername] = useState<string>('')
