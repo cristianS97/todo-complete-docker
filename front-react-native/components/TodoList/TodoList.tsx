@@ -22,7 +22,7 @@ export const TodoList = () => {
 const styles = StyleSheet.create({
     container: {
         marginTop: 15,
-        minWidth:'100%',
-        maxWidth: '100%'
+        minWidth:'90%',
+        maxWidth: '90%'
     }
 });

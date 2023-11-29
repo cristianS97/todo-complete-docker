@@ -43,10 +43,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         maxWidth: '40%',
         minWidth: '40%',
-        borderTopEndRadius: 40,
-        borderBottomEndRadius: 40,
-        borderTopLeftRadius: 40,
-        borderBottomLeftRadius: 40,
+        borderRadius: 40,
         backgroundColor: '#ff5945',
         height: '100%'
     },
