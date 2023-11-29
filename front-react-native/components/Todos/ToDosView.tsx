@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { AppHeader } from './AppHeader';
 import { NewTodo } from './NewTodo';
+import { TodoList } from '../TodoList/TodoList';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export const ToDosView = ({navigation}) => {
@@ -21,6 +22,9 @@ export const ToDosView = ({navigation}) => {
                     newTodo={newTodo}
                     setNewTodo={setNewTodo}
                 />
+                <View style={styles.todos}>
+                    <TodoList />
+                </View>
             </View>
         </LinearGradient>
     )
@@ -39,7 +43,9 @@ const styles = StyleSheet.create({
         maxHeight: '80%',
         borderRadius: 10,
         flexDirection: 'column',
-        alignItems: 'center',
-        gap: 2
+        alignItems: 'center'
+    },
+    todos: {
+        maxHeight: '75%'
     }
 });

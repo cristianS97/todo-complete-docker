@@ -3,15 +3,13 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 export const AppHeader = ({navigation}) => {
     return (
-        <View>
-            <View style={styles.container}>
-                <Text style={styles.title}>
-                    <FontAwesome5 name="clipboard-list" size={24} color="#ff5945"/> To-do App
-                </Text>
-                <Pressable onPress={() => navigation.navigate('login')}>
-                    <Text style={styles.cierre}>Cerrar sesión</Text>
-                </Pressable>
-            </View>
+        <View style={styles.container}>
+            <Text style={styles.title}>
+                <FontAwesome5 name="clipboard-list" size={24} color="#ff5945"/> To-do App
+            </Text>
+            <Pressable onPress={() => navigation.navigate('login')}>
+                <Text style={styles.cierre}>Cerrar sesión</Text>
+            </Pressable>
         </View>
     )
 }
@@ -23,7 +21,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         textAlign: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        maxHeight: '15%'
     },
     title: {
         color: '#002765',
