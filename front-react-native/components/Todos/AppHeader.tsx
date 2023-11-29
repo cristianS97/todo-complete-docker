@@ -4,7 +4,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 export const AppHeader = ({navigation}) => {
     return (
         <View>
-            <View>
+            <View style={styles.container}>
                 <Text style={styles.title}>
                     <FontAwesome5 name="clipboard-list" size={24} color="#ff5945"/> To-do App
                 </Text>
@@ -17,11 +17,22 @@ export const AppHeader = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        minWidth: '100%',
+        alignItems: 'center',
+        padding: 20,
+        textAlign: 'center',
+        justifyContent: 'center'
+    },
     title: {
         color: '#002765',
-        fontSize: 25
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginRight: 15
     },
     cierre: {
-        fontSize: 16
+        fontSize: 16,
+        fontWeight: 'bold'
     }
 });
