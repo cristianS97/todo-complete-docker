@@ -1,10 +1,10 @@
 import { Text, View, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 
-export const TodoItem = ({todo}) => {
+export const TodoItem = ({todo, changeState}) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.todo}>
+            <Text style={styles.todo} onPress={(e) => changeState(todo.id)}>
                 <View style={[todo.complete ? styles.circleComplete : styles.circle]}></View>
                 <View>
                     <Text>{todo.todo}</Text>
