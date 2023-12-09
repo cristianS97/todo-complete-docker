@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { InputLogin } from './InputLogin';
 import { ButtonLogin } from './ButtonLogin';
-import { isConstructorDeclaration } from 'typescript';
 
 export default function LoginView({navigation}) {
     const [username, setUsername] = useState<string>('')
